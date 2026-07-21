@@ -342,7 +342,7 @@ function sep1(rule, separator) {
   return seq(rule, repeat(seq(separator, rule)));
 }
 
-module.exports = grammar({
+export default grammar({
   name: 'smali',
 
   conflicts: $ => [
