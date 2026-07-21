@@ -583,7 +583,10 @@ export default grammar({
     prologue_directive: _ => '.prologue',
     epilogue_directive: _ => '.epilogue',
 
-    identifier: _ => /<?[a-zA-Z_$][a-zA-Z0-9_\-$]*>?/,
+    // SimpleName from the smali lexer: ASCII alnum, _-$, various unicode
+    // ranges, digits and '-' allowed anywhere (including the start), plus
+    // backtick-quoted names (API 30+) which may also contain spaces.
+    identifier: _ => /<?[a-zA-Z0-9_\-$\u00a1-\u1fff\u2010-\u2027\u2030-\ud7ff\ue000-\uffef]+>?|`[^`\r\n]+`/,
     // class_identifier: _ => token(/L[^;]+;/),
     class_identifier: $ => seq(
       alias($.L, 'L'),
@@ -606,18 +609,12 @@ export default grammar({
       $.full_method_signature,
     ),
     _field_body: $ => seq(
-      alias(choice($.identifier, $.number), $.field_identifier),
+      alias($.identifier, $.field_identifier),
       ':',
       alias($.type, $.field_type),
     ),
     method_signature: $ => seq(
-      alias(
-        choice(
-          seq(optional('-'), $.identifier),
-          $.number,
-        ),
-        $.method_identifier,
-      ),
+      alias($.identifier, $.method_identifier),
       $._method_signature_body,
     ),
     _method_signature_body: $ => seq(
@@ -732,20 +729,21 @@ export default grammar({
         signed_integer,
       );
 
-      return token(seq(
+      // lexical precedence over identifier, which may also start with a digit
+      return token(prec(1, seq(
         choice(hex_literal, decimal_literal),
         alias(optional(/[LlSsTt]/), $.number_type),
-      ));
+      )));
     },
 
-    float: $ => token(seq(
+    float: $ => token(prec(1, seq(
       choice(
         /-?(\d+(\.\d+)?|\.\d+)([Ee][+-]?\d+)?/,
         // hex floats with a binary exponent, e.g. 0x1.8p3
         /-?0[xX]([\da-fA-F]+(\.[\da-fA-F]*)?|\.[\da-fA-F]+)[pP][+-]?\d+/,
       ),
       alias(optional(/[fFdD]/), $.float_type),
-    )),
+    ))),
 
     // Only baksmali's casing is supported, as enumerated strings: a regex
     // (or a lowercase variant like 'nan') breaks lexing of a following

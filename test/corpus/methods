@@ -31,8 +31,6 @@ Test an empty method
       (method_identifier)
       (primitive_type))))
 
-
-
 ========================================================================
 Test a method with no modifiers
 ========================================================================
@@ -64,8 +62,6 @@ Test a method with no modifiers
     (method_signature
       (method_identifier)
       (primitive_type))))
-
-
 
 ========================================================================
 Test a method with one primitive parameter
@@ -101,8 +97,6 @@ Test a method with one primitive parameter
       (parameters
         (primitive_type))
       (primitive_type))))
-
-
 
 ========================================================================
 Test a method with multiple primitive parameter
@@ -140,8 +134,6 @@ Test a method with multiple primitive parameter
         (primitive_type)
         (primitive_type))
       (primitive_type))))
-
-
 
 ========================================================================
 Test a method with an object parameter
@@ -182,7 +174,6 @@ Test a method with an object parameter
           (identifier)))
       (primitive_type))))
 
-
 ========================================================================
 Test a method with an array parameter
 ========================================================================
@@ -222,3 +213,61 @@ Test a method with an array parameter
             (identifier)
             (identifier))))
       (primitive_type))))
+
+========================================================================
+Test methods with unusual simple names
+========================================================================
+
+.class public LA/BC;
+.super Ljava/lang/Object;
+
+.method public static -start()V
+	return-void
+.end method
+
+.method public static 2run()V
+	return-void
+.end method
+
+.method public static `has space`()V
+	return-void
+.end method
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (method_definition
+    (access_modifier)
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (primitive_type))
+    (expression
+      (opcode)))
+  (method_definition
+    (access_modifier)
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (primitive_type))
+    (expression
+      (opcode)))
+  (method_definition
+    (access_modifier)
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (primitive_type))
+    (expression
+      (opcode))))

@@ -23,8 +23,6 @@ Test an empty class
   (source_directive
     (string)))
 
-
-
 ========================================================================
 Test a class with a source file
 ========================================================================
@@ -50,8 +48,6 @@ Test a class with a source file
   (source_directive
     (string
       (string_fragment))))
-
-
 
 ========================================================================
 Test a class that implements an interface
@@ -83,8 +79,6 @@ Test a class that implements an interface
     (class_identifier
       (identifier)
       (identifier))))
-
-
 
 ========================================================================
 Test a class that implements multiple interfaces
@@ -122,8 +116,6 @@ Test a class that implements multiple interfaces
       (identifier)
       (identifier))))
 
-
-
 ========================================================================
 Test a class with a non valid Java character
 ========================================================================
@@ -149,8 +141,6 @@ Test a class with a non valid Java character
   (source_directive
     (string)))
 
-
-
 ========================================================================
 Test a class without an access modifier
 ========================================================================
@@ -173,3 +163,49 @@ Test a class without an access modifier
       (identifier)))
   (source_directive
     (string)))
+
+========================================================================
+Test a class with backtick-quoted descriptor segments
+========================================================================
+
+.class public L`com`/`test pkg`/Cls;
+.super Ljava/lang/Object;
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier))))
+
+========================================================================
+Test a class with unicode characters in the descriptor
+========================================================================
+
+.class public Lcom/テスト/Cls;
+.super Ljava/lang/Object;
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier))))
