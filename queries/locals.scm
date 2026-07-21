@@ -31,7 +31,8 @@
 (annotation_key) @definition.field
 
 (method_definition
-  (method_signature (method_identifier) @definition.method))
+  (method_signature
+    (method_identifier) @definition.method))
 
 (param_identifier) @definition.parameter
 

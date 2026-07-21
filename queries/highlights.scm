@@ -1,59 +1,69 @@
 ; Types
-
 (class_identifier
   (identifier) @type)
 
 (primitive_type) @type.builtin
 
 ((class_identifier
-   . (identifier) @_first @type.builtin
-   (identifier) @type.builtin)
+  .
+  (identifier) @_first @type.builtin
+  (identifier) @type.builtin)
   (#any-of? @_first "android" "dalvik" "java" "kotlinx"))
 
 ((class_identifier
-   . (identifier) @_first @type.builtin
-   .  (identifier) @_second @type.builtin
-   (identifier) @type.builtin)
+  .
+  (identifier) @_first @type.builtin
+  .
+  (identifier) @_second @type.builtin
+  (identifier) @type.builtin)
   (#eq? @_first "com")
   (#any-of? @_second "android" "google"))
 
 ; Methods
-
 (method_definition
-  (method_signature (method_identifier) @method))
+  (method_signature
+    (method_identifier) @method))
 
 (expression
   (opcode) @_invoke
-	(body
-	  (full_method_signature
-      (method_signature (method_identifier) @method.call)))
+  (body
+    (full_method_signature
+      (method_signature
+        (method_identifier) @method.call)))
   (#lua-match? @_invoke "^invoke"))
 
 (method_handle
   (full_method_signature
-	(method_signature (method_identifier) @method.call)))
+    (method_signature
+      (method_identifier) @method.call)))
 
 (custom_invoke
-  . (identifier) @method.call
-  (method_signature (method_identifier) @method.call))
+  .
+  (identifier) @method.call
+  (method_signature
+    (method_identifier) @method.call))
 
 (annotation_value
   (body
-    (method_signature (method_identifier) @method.call)))
+    (method_signature
+      (method_identifier) @method.call)))
 
 (annotation_value
   (body
     (full_method_signature
-      (method_signature (method_identifier) @method.call))))
+      (method_signature
+        (method_identifier) @method.call))))
 
 (field_definition
-	(body
-		(method_signature (method_identifier) @method.call)))
+  (body
+    (method_signature
+      (method_identifier) @method.call)))
 
 (field_definition
-	(body
-	  (full_method_signature
-		  (method_signature (method_identifier) @method.call))))
+  (body
+    (full_method_signature
+      (method_signature
+        (method_identifier) @method.call))))
 
 ((method_identifier) @constructor
   (#any-of? @constructor "<init>" "<clinit>"))
@@ -61,7 +71,6 @@
 "constructor" @constructor
 
 ; Fields
-
 [
   (field_identifier)
   (annotation_key)
@@ -71,26 +80,23 @@
   (#lua-match? @constant "^[%u_]*$"))
 
 ; Variables
-
 (variable) @variable.builtin
 
 (local_directive
   (identifier) @variable)
 
 ; Parameters
-
 (parameter) @parameter.builtin
+
 (param_identifier) @parameter
 
 ; Labels
-
 [
   (label)
   (jmp_label)
 ] @label
 
 ; Operators
-
 (opcode) @keyword.operator
 
 ((opcode) @keyword.return
@@ -114,7 +120,6 @@
 ] @operator
 
 ; Keywords
-
 [
   ".class"
   ".super"
@@ -146,9 +151,7 @@
   (epilogue_directive)
 ] @keyword
 
-[
-  ".source"
-] @include
+".source" @include
 
 [
   ".method"
@@ -161,9 +164,14 @@
 ] @exception
 
 ; Literals
-
 (string) @string
-(source_directive (string "\"" _ @text.uri "\""))
+
+(source_directive
+  (string
+    "\""
+    _ @text.uri
+    "\""))
+
 (escape_sequence) @string.escape
 
 (character) @character
@@ -173,9 +181,9 @@
 (number) @number
 
 [
- (float)
- (NaN)
- (Infinity)
+  (float)
+  (NaN)
+  (Infinity)
 ] @float
 
 (boolean) @boolean
@@ -183,7 +191,6 @@
 (null) @constant.builtin
 
 ; Misc
-
 (annotation_visibility) @storageclass
 
 (access_modifier) @type.qualifier
@@ -191,9 +198,15 @@
 (array_type
   "[" @punctuation.special)
 
-["{" "}"] @punctuation.bracket
+[
+  "{"
+  "}"
+] @punctuation.bracket
 
-["(" ")"] @punctuation.bracket
+[
+  "("
+  ")"
+] @punctuation.bracket
 
 [
   "->"
@@ -204,15 +217,14 @@
   "/"
 ] @punctuation.delimiter
 
-(line_directive (number) @text.underline @text.literal)
+(line_directive
+  (number) @text.underline @text.literal)
 
 ; Comments
-
 (comment) @comment @spell
 
 (class_definition
   (comment) @comment.documentation)
 
 ; Errors
-
 (ERROR) @error
