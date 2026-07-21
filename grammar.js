@@ -458,13 +458,14 @@ export default grammar({
       '.end subannotation',
     ),
 
+    // the reference rule:
+    // REGISTER (COMMA STRING_LITERAL)? annotation* END_PARAM_DIRECTIVE?
     param_directive: $ => prec.right(seq(
       '.param',
       $.parameter,
-      optional(choice(
-        seq(repeat($.annotation_directive), '.end param'),
-        seq(optional(','), choice($.literal, alias($.identifier, $.param_identifier))),
-      )),
+      optional(seq(optional(','), choice($.literal, alias($.identifier, $.param_identifier)))),
+      repeat($.annotation_directive),
+      optional('.end param'),
     )),
 
     parameter_directive: $ => prec.right(seq(

@@ -34,8 +34,6 @@ Test a simple param
     (param_directive
       (parameter))))
 
-
-
 ========================================================================
 Test a simple param block
 ========================================================================
@@ -72,8 +70,6 @@ Test a simple param block
       (primitive_type))
     (param_directive
       (parameter))))
-
-
 
 ========================================================================
 Test a param block with an empty annotation
@@ -119,3 +115,91 @@ Test a param block with an empty annotation
           (identifier)
           (identifier)
           (identifier))))))
+
+========================================================================
+Test params with a debug name and annotations
+========================================================================
+
+# baksmali output for an annotated named parameter; the trailing method
+# annotation after `.param p2` attaches to the param syntactically, as
+# in the reference parser
+.class public LSample;
+.super Ljava/lang/Object;
+
+.method public run(Ljava/lang/String;I)Ljava/lang/String;
+    .registers 4
+    .param p1, "callback"    # Ljava/lang/String;
+        .annotation runtime LMeta;
+            key = "param annotation"
+        .end annotation
+    .end param
+    .param p2, "count"    # I
+    .annotation runtime LMeta;
+        typeValue = I
+    .end annotation
+
+    return-object p1
+.end method
+
+---
+
+(class_definition
+  (comment)
+  (comment)
+  (comment)
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (method_definition
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (parameters
+        (class_identifier
+          (identifier)
+          (identifier)
+          (identifier))
+        (primitive_type))
+      (class_identifier
+        (identifier)
+        (identifier)
+        (identifier)))
+    (registers_directive
+      (number))
+    (param_directive
+      (parameter)
+      (string
+        (string_fragment))
+      (comment)
+      (annotation_directive
+        (annotation_visibility)
+        (class_identifier
+          (identifier))
+        (annotation_property
+          (annotation_key)
+          (annotation_value
+            (string
+              (string_fragment))))))
+    (param_directive
+      (parameter)
+      (string
+        (string_fragment))
+      (comment)
+      (annotation_directive
+        (annotation_visibility)
+        (class_identifier
+          (identifier))
+        (annotation_property
+          (annotation_key)
+          (annotation_value
+            (primitive_type)))))
+    (expression
+      (opcode)
+      (parameter))))
