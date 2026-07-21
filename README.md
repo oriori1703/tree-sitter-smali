@@ -6,5 +6,5 @@
 Smali grammar for [tree-sitter](https://github.com/tree-sitter/tree-sitter).
 
 The Smali syntax is poorly documented so there might be some problems with it
-but the authoritative definition for the syntax is at [JesusFreke/smali](https://github.com/JesusFreke/smali),
-most notably at [smali/src/main/jflex/smaliLexer.jflex](https://github.com/JesusFreke/smali/blob/master/smali/src/main/jflex/smaliLexer.jflex)
+but the authoritative definition for the syntax is at [baksmali/smali](https://github.com/baksmali/smali),
+most notably at [smali/src/main/jflex/smaliLexer.jflex](https://github.com/baksmali/smali/blob/main/smali/src/main/jflex/smaliLexer.jflex)

@@ -25,16 +25,14 @@ function clone_repo {
 	popd >/dev/null
 }
 
-clone_repo JesusFreke smali 2771eae0a11f07bd892732232e6ee4e32437230d
+clone_repo baksmali smali a4d1453dcf40517486739106aa822de4e5152cf3
 clone_repo AlexeySoshin smali2java 95795b9ccd540ae72987ba68896a783f312b8c29
 clone_repo amaanq misc-smali-code 220aa27251f3ed680d563de3f174b1106c9b9f0e
 
 known_failures="$(cat script/known_failures.txt)"
 
-# shellcheck disable=2046
 tree-sitter parse -q \
-	"examples/**/*.smali" \
-	$(for failure in $known_failures; do echo "!${failure}"; done)
+	--paths <(find examples -name "*.smali" | grep -xvF -f script/known_failures.txt | sort)
 
 example_count=$(find examples -name "*.smali" | wc -l)
 failure_count=$(wc -w <<<"$known_failures")

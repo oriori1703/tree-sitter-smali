@@ -3,7 +3,7 @@
  * @author Amaan Qureshi <amaanq12@gmail.com>
  * @author Yotam Nachum <me@yotam.net>
  * @license MIT
- * @see {@link https://github.com/JesusFreke/smali|official implementation}
+ * @see {@link https://github.com/baksmali/smali|official implementation}
  * @see {@link https://source.android.com/docs/core/runtime/dalvik-bytecode|official dex bytecode reference}
  */
 

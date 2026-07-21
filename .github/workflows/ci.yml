@@ -44,7 +44,7 @@ jobs:
           test-swift: true
       - name: Set up examples
         run: |-
-          git clone https://github.com/JesusFreke/smali examples/smali --single-branch --depth=1 --filter=blob:none
+          git clone https://github.com/baksmali/smali examples/smali --single-branch --depth=1 --filter=blob:none
           git clone https://github.com/AlexeySoshin/smali2java examples/smali2java --single-branch --depth=1 --filter=blob:none
           git clone https://github.com/amaanq/misc-smali-code examples/misc-smali-code --single-branch --depth=1 --filter=blob:none
       - name: Parse examples
