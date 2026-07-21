@@ -10902,7 +10902,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 1273:
       ACCEPT_TOKEN(sym_number);
       ADVANCE_MAP(
-        '.', 602,
+        '.', 1289,
         '0', 1275,
         '_', 957,
         'E', 815,
@@ -10925,7 +10925,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 1274:
       ACCEPT_TOKEN(sym_number);
       ADVANCE_MAP(
-        '.', 602,
+        '.', 1289,
         '0', 1276,
         '_', 1255,
         'E', 816,
@@ -10948,7 +10948,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 1275:
       ACCEPT_TOKEN(sym_number);
       ADVANCE_MAP(
-        '.', 602,
+        '.', 1289,
         '_', 957,
         'E', 815,
         'e', 815,
@@ -10968,7 +10968,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 1276:
       ACCEPT_TOKEN(sym_number);
       ADVANCE_MAP(
-        '.', 602,
+        '.', 1289,
         '_', 1255,
         'E', 816,
         'e', 816,

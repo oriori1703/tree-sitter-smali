@@ -751,7 +751,8 @@ export default grammar({
 
     float: $ => token(prec(1, seq(
       choice(
-        /-?(\d+(\.\d+)?|\.\d+)([Ee][+-]?\d+)?/,
+        // the fraction digits are optional, e.g. `3.` and `1.e5` are valid
+        /-?(\d+(\.\d*)?|\.\d+)([Ee][+-]?\d+)?/,
         // hex floats with a binary exponent, e.g. 0x1.8p3
         /-?0[xX]([\da-fA-F]+(\.[\da-fA-F]*)?|\.[\da-fA-F]+)[pP][+-]?\d+/,
       ),

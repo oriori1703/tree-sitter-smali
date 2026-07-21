@@ -50,6 +50,8 @@ Test fields with float and double literal values
 .field public static i:D = NaNd
 .field public static j:F = -Infinityf
 .field public static k:D = InfinityD
+.field public static l:D = 3.
+.field public static m:D = 1.e5
 
 ---
 
@@ -152,7 +154,23 @@ Test fields with float and double literal values
     (field_identifier)
     (field_type
       (primitive_type))
-    (Infinity)))
+    (Infinity))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float)))
 
 ========================================================================
 Test fields with unusual simple names
