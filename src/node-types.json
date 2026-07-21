@@ -677,6 +677,11 @@
     }
   },
   {
+    "type": "field_identifier",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "full_method_signature",
     "named": true,
     "fields": {},
@@ -853,6 +858,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "method_identifier",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "method_signature",
@@ -1649,10 +1659,6 @@
     "named": false
   },
   {
-    "type": "field_identifier",
-    "named": true
-  },
-  {
     "type": "field_offset",
     "named": true
   },
@@ -2055,10 +2061,6 @@
   {
     "type": "long-to-int",
     "named": false
-  },
-  {
-    "type": "method_identifier",
-    "named": true
   },
   {
     "type": "monitor-enter",

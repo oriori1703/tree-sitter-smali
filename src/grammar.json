@@ -2312,8 +2312,21 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "access_modifier"
+              },
+              {
+                "type": "STRING",
+                "value": "constructor"
+              }
+            ]
           },
           "named": true,
           "value": "field_identifier"
@@ -2339,8 +2352,21 @@
         {
           "type": "ALIAS",
           "content": {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "access_modifier"
+              },
+              {
+                "type": "STRING",
+                "value": "constructor"
+              }
+            ]
           },
           "named": true,
           "value": "method_identifier"
@@ -3518,6 +3544,9 @@
   "conflicts": [
     [
       "field_definition"
+    ],
+    [
+      "access_modifiers"
     ]
   ],
   "precedences": [],

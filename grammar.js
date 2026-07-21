@@ -360,6 +360,8 @@ export default grammar({
 
   conflicts: $ => [
     [$.field_definition], // smali/src/test/resources/LexerTest/RealSmaliFileTest.smali to understand why
+    // an access modifier followed by ':' or '(' is a member name
+    [$.access_modifiers],
   ],
 
   externals: $ => [
@@ -608,13 +610,20 @@ export default grammar({
       alias($._method_signature_body, $.method_signature),
       $.full_method_signature,
     ),
+    // keywords are valid member names (simple_name in the reference parser)
     _field_body: $ => seq(
-      alias($.identifier, $.field_identifier),
+      alias(
+        choice($.identifier, $.access_modifier, 'constructor'),
+        $.field_identifier,
+      ),
       ':',
       alias($.type, $.field_type),
     ),
     method_signature: $ => seq(
-      alias($.identifier, $.method_identifier),
+      alias(
+        choice($.identifier, $.access_modifier, 'constructor'),
+        $.method_identifier,
+      ),
       $._method_signature_body,
     ),
     _method_signature_body: $ => seq(

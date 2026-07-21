@@ -288,3 +288,226 @@ Test string and character escape sequences
     (field_type
       (primitive_type))
     (character)))
+
+========================================================================
+Test a field named after a keyword (kotlin's SafePublicationLazyImpl)
+========================================================================
+
+# Excerpt of baksmali output for kotlin's SafePublicationLazyImpl
+# (libraries/stdlib/jvm/src/kotlin/util/LazyJVM.kt), which declares
+# `private val final: Any` as an artificial field for safe publication.
+.class final Lkotlin/SafePublicationLazyImpl;
+.super Ljava/lang/Object;
+.source "LazyJVM.kt"
+
+# instance fields
+.field private volatile _value:Ljava/lang/Object;
+
+.field private final final:Ljava/lang/Object;
+
+.method public constructor <init>(Lkotlin/jvm/functions/Function0;)V
+    .locals 4
+    .param p1    # Lkotlin/jvm/functions/Function0;
+        .annotation build Lorg/jetbrains/annotations/NotNull;
+        .end annotation
+    .end param
+
+    .prologue
+    move-object v2, p0
+
+    sget-object v3, Lkotlin/UNINITIALIZED_VALUE;->INSTANCE:Lkotlin/UNINITIALIZED_VALUE;
+
+    iput-object v3, v2, Lkotlin/SafePublicationLazyImpl;->final:Ljava/lang/Object;
+
+    return-void
+.end method
+
+---
+
+(class_definition
+  (comment)
+  (comment)
+  (comment)
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (source_directive
+    (string
+      (string_fragment)))
+  (comment)
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (class_identifier
+        (identifier)
+        (identifier)
+        (identifier))))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (class_identifier
+        (identifier)
+        (identifier)
+        (identifier))))
+  (method_definition
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (parameters
+        (class_identifier
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier)))
+      (primitive_type))
+    (locals_directive
+      (number))
+    (param_directive
+      (parameter)
+      (comment)
+      (annotation_directive
+        (annotation_visibility)
+        (class_identifier
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier))))
+    (prologue_directive)
+    (expression
+      (opcode)
+      (variable)
+      (parameter))
+    (expression
+      (opcode)
+      (variable)
+      (body
+        (class_identifier
+          (identifier)
+          (identifier))
+        (field_identifier)
+        (field_type
+          (class_identifier
+            (identifier)
+            (identifier)))))
+    (expression
+      (opcode)
+      (variable)
+      (variable)
+      (body
+        (class_identifier
+          (identifier)
+          (identifier))
+        (field_identifier)
+        (field_type
+          (class_identifier
+            (identifier)
+            (identifier)
+            (identifier)))))
+    (expression
+      (opcode))))
+
+========================================================================
+Test members with access modifier keywords as names
+========================================================================
+
+.class public LA/BC;
+.super Ljava/lang/Object;
+
+.field public bridge:I
+.field public final:I
+
+.field public constructor:Ljava/lang/reflect/Constructor;
+
+.method public final final()V
+	iput-object p0, p0, LA/BC;->final:Ljava/lang/Object;
+	iput-object p0, p0, LA/BC;->constructor:Ljava/lang/reflect/Constructor;
+	return-void
+.end method
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (field_definition
+    (access_modifiers
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type)))
+  (field_definition
+    (access_modifiers
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type)))
+  (field_definition
+    (access_modifiers
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (class_identifier
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier))))
+  (method_definition
+    (access_modifier)
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (primitive_type))
+    (expression
+      (opcode)
+      (parameter)
+      (parameter)
+      (body
+        (class_identifier
+          (identifier)
+          (identifier))
+        (field_identifier)
+        (field_type
+          (class_identifier
+            (identifier)
+            (identifier)
+            (identifier)))))
+    (expression
+      (opcode)
+      (parameter)
+      (parameter)
+      (body
+        (class_identifier
+          (identifier)
+          (identifier))
+        (field_identifier)
+        (field_type
+          (class_identifier
+            (identifier)
+            (identifier)
+            (identifier)
+            (identifier)))))
+    (expression
+      (opcode))))
