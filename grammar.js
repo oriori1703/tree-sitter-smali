@@ -502,10 +502,18 @@ export default grammar({
       $.method_handle,
       $.custom_invoke,
       $.verification_error_type,
+      $.inline_index,
+      $.vtable_index,
+      $.field_offset,
     ),
 
     // the first operand of throw-verification-error
     verification_error_type: _ => choice(...verification_error_types),
+
+    // odex index operands, e.g. `execute-inline {v0}, inline@0x5`
+    inline_index: _ => token(/inline@0x[0-9a-fA-F]+/),
+    vtable_index: _ => token(/vtable@0x[0-9a-fA-F]+/),
+    field_offset: _ => token(/field@0x[0-9a-fA-F]+/),
 
     // code declarations
     directive: $ => choice(

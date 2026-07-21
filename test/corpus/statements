@@ -179,3 +179,51 @@ Test throw-verification-error statements
           (method_signature
             (method_identifier)
             (primitive_type)))))))
+
+========================================================================
+Test odex index operands
+========================================================================
+
+.class public LA/BC;
+.super Ljava/lang/Object;
+
+.method public quick()V
+	execute-inline {p0}, inline@0x5
+	invoke-virtual-quick {p0}, vtable@0xb
+	iget-quick p0, p0, field@0x10
+.end method
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (method_definition
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (primitive_type))
+    (expression
+      (opcode)
+      (list
+        (parameter))
+      (inline_index))
+    (expression
+      (opcode)
+      (list
+        (parameter))
+      (vtable_index))
+    (expression
+      (opcode)
+      (parameter)
+      (parameter)
+      (field_offset))))

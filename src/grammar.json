@@ -1656,6 +1656,18 @@
         {
           "type": "SYMBOL",
           "name": "verification_error_type"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "inline_index"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "vtable_index"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "field_offset"
         }
       ]
     },
@@ -1703,6 +1715,27 @@
           "value": "instantiation-error"
         }
       ]
+    },
+    "inline_index": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "inline@0x[0-9a-fA-F]+"
+      }
+    },
+    "vtable_index": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "vtable@0x[0-9a-fA-F]+"
+      }
+    },
+    "field_offset": {
+      "type": "TOKEN",
+      "content": {
+        "type": "PATTERN",
+        "value": "field@0x[0-9a-fA-F]+"
+      }
     },
     "directive": {
       "type": "CHOICE",

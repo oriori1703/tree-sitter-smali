@@ -190,7 +190,12 @@
 
 (null) @constant.builtin
 
-(verification_error_type) @constant.builtin
+[
+  (verification_error_type)
+  (inline_index)
+  (vtable_index)
+  (field_offset)
+] @constant.builtin
 
 ; Misc
 (annotation_visibility) @storageclass

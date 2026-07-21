@@ -182,6 +182,14 @@
         "named": true
       },
       {
+        "type": "field_offset",
+        "named": true
+      },
+      {
+        "type": "inline_index",
+        "named": true
+      },
+      {
         "type": "jmp_label",
         "named": true
       },
@@ -219,6 +227,10 @@
       },
       {
         "type": "verification_error_type",
+        "named": true
+      },
+      {
+        "type": "vtable_index",
         "named": true
       }
     ]
@@ -1641,6 +1653,10 @@
     "named": true
   },
   {
+    "type": "field_offset",
+    "named": true
+  },
+  {
     "type": "fill-array-data",
     "named": false
   },
@@ -1823,6 +1839,10 @@
   {
     "type": "illegal-method-access",
     "named": false
+  },
+  {
+    "type": "inline_index",
+    "named": true
   },
   {
     "type": "instance-get",
@@ -2571,6 +2591,10 @@
   {
     "type": "volatile",
     "named": false
+  },
+  {
+    "type": "vtable_index",
+    "named": true
   },
   {
     "type": "whitelist",
