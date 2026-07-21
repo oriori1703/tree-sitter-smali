@@ -184,6 +184,7 @@ Test fields with unusual simple names
 .field public static -dashed:I
 .field public static データ:I
 .field public static 123:I
+.field public static 😀:I
 
 ---
 
@@ -199,6 +200,13 @@ Test fields with unusual simple names
       (identifier)
       (identifier)
       (identifier)))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type)))
   (field_definition
     (access_modifiers
       (access_modifier)

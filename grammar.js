@@ -592,7 +592,7 @@ export default grammar({
     // SimpleName from the smali lexer: ASCII alnum, _-$, various unicode
     // ranges, digits and '-' allowed anywhere (including the start), plus
     // backtick-quoted names (API 30+) which may also contain spaces.
-    identifier: _ => /<?[a-zA-Z0-9_\-$\u00a1-\u1fff\u2010-\u2027\u2030-\ud7ff\ue000-\uffef]+>?|`[^`\r\n]+`/,
+    identifier: _ => /<?[a-zA-Z0-9_\-$\u00a1-\u1fff\u2010-\u2027\u2030-\ud7ff\ue000-\uffef\u{10000}-\u{10ffff}]+>?|`[^`\r\n]+`/u,
     // class_identifier: _ => token(/L[^;]+;/),
     class_identifier: $ => seq(
       alias($.L, 'L'),
