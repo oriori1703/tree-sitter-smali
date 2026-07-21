@@ -437,8 +437,11 @@ export default grammar({
       '.end annotation',
     ),
     annotation_visibility: _ => choice('system', 'build', 'runtime'),
-    annotation_property: $ => seq($.annotation_key, '=', $.annotation_value),
-    annotation_key: _ => /\w+/,
+    annotation_property: $ => seq(
+      alias($.identifier, $.annotation_key),
+      '=',
+      $.annotation_value,
+    ),
     annotation_value: $ => choice(
       $.literal,
       $.body,

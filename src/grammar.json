@@ -274,8 +274,13 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "annotation_key"
+          "type": "ALIAS",
+          "content": {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          "named": true,
+          "value": "annotation_key"
         },
         {
           "type": "STRING",
@@ -286,10 +291,6 @@
           "name": "annotation_value"
         }
       ]
-    },
-    "annotation_key": {
-      "type": "PATTERN",
-      "value": "\\w+"
     },
     "annotation_value": {
       "type": "CHOICE",

@@ -261,3 +261,51 @@ Test annotations with type values
       (annotation_value
         (array_type
           (primitive_type))))))
+
+========================================================================
+Test annotation keys with unusual characters
+========================================================================
+
+# baksmali output for an annotation element named `a$b` ('$' is legal in
+# JVM member names); unicode and quoted keys follow the same rule
+.class public LSample;
+.super Ljava/lang/Object;
+
+.annotation runtime LMeta;
+    a$b = "dollar key"
+    ключ = 1
+    `quoted key` = 2
+.end annotation
+
+---
+
+(class_definition
+  (comment)
+  (comment)
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (annotation_directive
+    (annotation_visibility)
+    (class_identifier
+      (identifier))
+    (annotation_property
+      (annotation_key)
+      (annotation_value
+        (string
+          (string_fragment))))
+    (annotation_property
+      (annotation_key)
+      (annotation_value
+        (number)))
+    (annotation_property
+      (annotation_key)
+      (annotation_value
+        (number)))))
