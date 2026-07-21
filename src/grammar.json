@@ -1652,6 +1652,55 @@
         {
           "type": "SYMBOL",
           "name": "custom_invoke"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "verification_error_type"
+        }
+      ]
+    },
+    "verification_error_type": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "no-error"
+        },
+        {
+          "type": "STRING",
+          "value": "generic-error"
+        },
+        {
+          "type": "STRING",
+          "value": "no-such-class"
+        },
+        {
+          "type": "STRING",
+          "value": "no-such-field"
+        },
+        {
+          "type": "STRING",
+          "value": "no-such-method"
+        },
+        {
+          "type": "STRING",
+          "value": "illegal-class-access"
+        },
+        {
+          "type": "STRING",
+          "value": "illegal-field-access"
+        },
+        {
+          "type": "STRING",
+          "value": "illegal-method-access"
+        },
+        {
+          "type": "STRING",
+          "value": "class-change-error"
+        },
+        {
+          "type": "STRING",
+          "value": "instantiation-error"
         }
       ]
     },

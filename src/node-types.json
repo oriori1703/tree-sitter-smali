@@ -216,6 +216,10 @@
       {
         "type": "type",
         "named": true
+      },
+      {
+        "type": "verification_error_type",
+        "named": true
       }
     ]
   },
@@ -1115,6 +1119,11 @@
     }
   },
   {
+    "type": "verification_error_type",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "\n",
     "named": false
   },
@@ -1459,6 +1468,10 @@
     "named": false
   },
   {
+    "type": "class-change-error",
+    "named": false
+  },
+  {
     "type": "cmp-long",
     "named": false
   },
@@ -1660,6 +1673,10 @@
     "named": false
   },
   {
+    "type": "generic-error",
+    "named": false
+  },
+  {
     "type": "goto",
     "named": false
   },
@@ -1796,6 +1813,18 @@
     "named": false
   },
   {
+    "type": "illegal-class-access",
+    "named": false
+  },
+  {
+    "type": "illegal-field-access",
+    "named": false
+  },
+  {
+    "type": "illegal-method-access",
+    "named": false
+  },
+  {
     "type": "instance-get",
     "named": false
   },
@@ -1805,6 +1834,10 @@
   },
   {
     "type": "instance-put",
+    "named": false
+  },
+  {
+    "type": "instantiation-error",
     "named": false
   },
   {
@@ -2133,6 +2166,22 @@
   },
   {
     "type": "new-instance",
+    "named": false
+  },
+  {
+    "type": "no-error",
+    "named": false
+  },
+  {
+    "type": "no-such-class",
+    "named": false
+  },
+  {
+    "type": "no-such-field",
+    "named": false
+  },
+  {
+    "type": "no-such-method",
     "named": false
   },
   {

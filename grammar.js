@@ -46,6 +46,19 @@ const restriction_flags = [
   'test-api',
 ];
 
+const verification_error_types = [
+  'no-error',
+  'generic-error',
+  'no-such-class',
+  'no-such-field',
+  'no-such-method',
+  'illegal-class-access',
+  'illegal-field-access',
+  'illegal-method-access',
+  'class-change-error',
+  'instantiation-error',
+];
+
 const primitives = ['V', 'Z', 'B', 'S', 'C', 'I', 'J', 'F', 'D'];
 
 const opcodes = [
@@ -488,7 +501,11 @@ export default grammar({
       $.subannotation_directive,
       $.method_handle,
       $.custom_invoke,
+      $.verification_error_type,
     ),
+
+    // the first operand of throw-verification-error
+    verification_error_type: _ => choice(...verification_error_types),
 
     // code declarations
     directive: $ => choice(

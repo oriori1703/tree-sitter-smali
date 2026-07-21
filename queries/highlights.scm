@@ -190,6 +190,8 @@
 
 (null) @constant.builtin
 
+(verification_error_type) @constant.builtin
+
 ; Misc
 (annotation_visibility) @storageclass
 
