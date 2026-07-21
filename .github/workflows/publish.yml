@@ -4,17 +4,19 @@ on:
   push:
     tags: ["*"]
 
-permissions:
-  contents: write
-  id-token: write
-  attestations: write
+concurrency:
+  group: ${{github.workflow}}-${{github.ref}}
+  cancel-in-progress: true
 
 jobs:
-  github:
+  release:
     uses: tree-sitter/workflows/.github/workflows/release.yml@main
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
     with:
       generate: true
-      attestations: true
   npm:
     uses: tree-sitter/workflows/.github/workflows/package-npm.yml@main
     secrets:
@@ -30,6 +32,6 @@ jobs:
   pypi:
     uses: tree-sitter/workflows/.github/workflows/package-pypi.yml@main
     secrets:
-      PYPI_API_TOKEN: ${{secrets.PYPI_API_TOKEN}}
+      PYPI_API_TOKEN: ${{secrets.PYPI_TOKEN}}
     with:
       generate: true
