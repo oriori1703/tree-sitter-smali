@@ -739,15 +739,25 @@ export default grammar({
     },
 
     float: $ => token(seq(
-      /-?(\d+(\.\d+)?|\.\d+)([Ee][+-]?\d+)?/,
-      alias(optional('f'), $.float_type),
+      choice(
+        /-?(\d+(\.\d+)?|\.\d+)([Ee][+-]?\d+)?/,
+        // hex floats with a binary exponent, e.g. 0x1.8p3
+        /-?0[xX]([\da-fA-F]+(\.[\da-fA-F]*)?|\.[\da-fA-F]+)[pP][+-]?\d+/,
+      ),
+      alias(optional(/[fFdD]/), $.float_type),
     )),
 
-    // FIXME: adding an optional 'f' doesn't work, I don't know why,
-    // so this approach was used instead
-    NaN: _ => token(prec(1, choice('NaN', 'NaNf'))),
+    // Only baksmali's casing is supported, as enumerated strings: a regex
+    // (or a lowercase variant like 'nan') breaks lexing of a following
+    // zero-operand opcode.
+    NaN: _ => token(prec(1, choice(
+      ...['', 'f', 'F', 'd', 'D'].map(suffix => 'NaN' + suffix),
+    ))),
 
-    Infinity: _ => token(prec(1, choice('Infinity', '-Infinity'))),
+    Infinity: _ => token(prec(1, choice(
+      ...['', '-'].flatMap(sign =>
+        ['', 'f', 'F', 'd', 'D'].map(suffix => sign + 'Infinity' + suffix)),
+    ))),
 
     // string: _ => /"[^"\\]*(?:\\.[^"\\]*)*"/,
     string: $ => seq(

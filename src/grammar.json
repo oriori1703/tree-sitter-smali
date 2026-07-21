@@ -3258,8 +3258,17 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "PATTERN",
-            "value": "-?(\\d+(\\.\\d+)?|\\.\\d+)([Ee][+-]?\\d+)?"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "PATTERN",
+                "value": "-?(\\d+(\\.\\d+)?|\\.\\d+)([Ee][+-]?\\d+)?"
+              },
+              {
+                "type": "PATTERN",
+                "value": "-?0[xX]([\\da-fA-F]+(\\.[\\da-fA-F]*)?|\\.[\\da-fA-F]+)[pP][+-]?\\d+"
+              }
+            ]
           },
           {
             "type": "ALIAS",
@@ -3267,8 +3276,8 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "f"
+                  "type": "PATTERN",
+                  "value": "[fFdD]"
                 },
                 {
                   "type": "BLANK"
@@ -3296,6 +3305,18 @@
             {
               "type": "STRING",
               "value": "NaNf"
+            },
+            {
+              "type": "STRING",
+              "value": "NaNF"
+            },
+            {
+              "type": "STRING",
+              "value": "NaNd"
+            },
+            {
+              "type": "STRING",
+              "value": "NaND"
             }
           ]
         }
@@ -3315,7 +3336,39 @@
             },
             {
               "type": "STRING",
+              "value": "Infinityf"
+            },
+            {
+              "type": "STRING",
+              "value": "InfinityF"
+            },
+            {
+              "type": "STRING",
+              "value": "Infinityd"
+            },
+            {
+              "type": "STRING",
+              "value": "InfinityD"
+            },
+            {
+              "type": "STRING",
               "value": "-Infinity"
+            },
+            {
+              "type": "STRING",
+              "value": "-Infinityf"
+            },
+            {
+              "type": "STRING",
+              "value": "-InfinityF"
+            },
+            {
+              "type": "STRING",
+              "value": "-Infinityd"
+            },
+            {
+              "type": "STRING",
+              "value": "-InfinityD"
             }
           ]
         }

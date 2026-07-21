@@ -31,3 +31,125 @@ Test a field without an access modifier
         (identifier)
         (identifier)
         (identifier)))))
+
+========================================================================
+Test fields with float and double literal values
+========================================================================
+
+.class public LA/BC;
+.super Ljava/lang/Object;
+
+.field public static a:F = 1.5f
+.field public static b:F = 2.5F
+.field public static c:D = 1.5d
+.field public static d:D = 3.0D
+.field public static e:F = 10f
+.field public static f:D = 0x1.8p3
+.field public static g:F = -0x1p-2f
+.field public static h:F = NaNf
+.field public static i:D = NaNd
+.field public static j:F = -Infinityf
+.field public static k:D = InfinityD
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (float))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (NaN))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (NaN))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (Infinity))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (Infinity)))
