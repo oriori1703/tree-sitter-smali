@@ -216,3 +216,75 @@ Test fields with unusual simple names
     (field_identifier)
     (field_type
       (primitive_type))))
+
+========================================================================
+Test string and character escape sequences
+========================================================================
+
+.class public LA/BC;
+.super Ljava/lang/Object;
+
+.field public static a:Ljava/lang/String; = "tab \t newline \n quote \" backslash \\ unicode é"
+.field public static b:C = '\n'
+.field public static c:C = 'é'
+.field public static d:C = 'x'
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (class_identifier
+        (identifier)
+        (identifier)
+        (identifier)))
+    (string
+      (string_fragment)
+      (escape_sequence)
+      (string_fragment)
+      (escape_sequence)
+      (string_fragment)
+      (escape_sequence)
+      (string_fragment)
+      (escape_sequence)
+      (string_fragment)))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (character
+      (escape_sequence)))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (character))
+  (field_definition
+    (access_modifiers
+      (access_modifier)
+      (access_modifier))
+    (field_identifier)
+    (field_type
+      (primitive_type))
+    (character)))

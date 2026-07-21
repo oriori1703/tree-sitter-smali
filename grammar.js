@@ -773,28 +773,27 @@ export default grammar({
     string_fragment: _ => token.immediate(prec(1, /[^"\\]+/)),
 
     _escape_sequence: $ => choice(
-      prec(2, token.immediate(seq('\\', /[^abfnrtvxu'\"\\\?]/))),
+      prec(2, token.immediate(seq('\\', /[^btnfru'\"\\]/))),
       prec(1, $.escape_sequence),
     ),
+    // the smali lexer only accepts \b \t \n \f \r \' \" \\ and \uXXXX
     escape_sequence: _ => token.immediate(seq(
       '\\',
       choice(
-        /[^xu0-7]/,
-        /[0-7]{1,3}/,
-        /x[0-9a-fA-F]{2}/,
+        /[btnfr'\"\\]/,
         /u[0-9a-fA-F]{4}/,
-        /u\{[0-9a-fA-F]+\}/,
       ),
     )),
 
     boolean: _ => choice('true', 'false'),
 
+    // the smali lexer rejects empty character literals
     character: $ => seq(
       '\'',
-      optional(choice(
+      choice(
         $._escape_sequence,
         /[^\\']/,
-      )),
+      ),
       '\'',
     ),
 
