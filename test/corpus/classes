@@ -209,3 +209,55 @@ Test a class with unicode characters in the descriptor
       (identifier)
       (identifier)
       (identifier))))
+
+========================================================================
+Test annotations with type values
+========================================================================
+
+# baksmali output for a Class-valued annotation element:
+# @Meta(typeValue = byte[].class, typeArray = {int.class, String[].class})
+.class public LSample;
+.super Ljava/lang/Object;
+
+.annotation runtime LMeta;
+    typeArray = {
+        I,
+        [Ljava/lang/String;
+    }
+    typeValue = [B
+.end annotation
+
+---
+
+(class_definition
+  (comment)
+  (comment)
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (annotation_directive
+    (annotation_visibility)
+    (class_identifier
+      (identifier))
+    (annotation_property
+      (annotation_key)
+      (annotation_value
+        (list
+          (primitive_type)
+          (array_type
+            (class_identifier
+              (identifier)
+              (identifier)
+              (identifier))))))
+    (annotation_property
+      (annotation_key)
+      (annotation_value
+        (array_type
+          (primitive_type))))))

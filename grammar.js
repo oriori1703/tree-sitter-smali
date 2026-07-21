@@ -445,7 +445,7 @@ export default grammar({
       $.list,
       $.enum_reference,
       $.subannotation_directive,
-      $.class_identifier,
+      $.type,
     ),
 
     subannotation_directive: $ => seq(

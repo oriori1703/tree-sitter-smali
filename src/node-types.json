@@ -310,10 +310,6 @@
           "named": true
         },
         {
-          "type": "class_identifier",
-          "named": true
-        },
-        {
           "type": "enum_reference",
           "named": true
         },
@@ -327,6 +323,10 @@
         },
         {
           "type": "subannotation_directive",
+          "named": true
+        },
+        {
+          "type": "type",
           "named": true
         }
       ]
