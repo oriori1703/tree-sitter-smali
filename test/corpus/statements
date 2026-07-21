@@ -36,8 +36,6 @@ Test an empty statement
     (expression
       (opcode))))
 
-
-
 ========================================================================
 Test statements with variable and number literal arguments
 ========================================================================
@@ -88,3 +86,47 @@ Test statements with variable and number literal arguments
     (expression
       (opcode)
       (variable))))
+
+========================================================================
+Test odex return-void opcodes
+========================================================================
+
+.class public LA/BC;
+.super Ljava/lang/Object;
+
+.method public barrier()V
+	return-void-barrier
+.end method
+
+.method public noBarrier()V
+	return-void-no-barrier
+.end method
+
+---
+
+(class_definition
+  (class_directive
+    (access_modifiers
+      (access_modifier))
+    (class_identifier
+      (identifier)
+      (identifier)))
+  (super_directive
+    (class_identifier
+      (identifier)
+      (identifier)
+      (identifier)))
+  (method_definition
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (primitive_type))
+    (expression
+      (opcode)))
+  (method_definition
+    (access_modifier)
+    (method_signature
+      (method_identifier)
+      (primitive_type))
+    (expression
+      (opcode))))

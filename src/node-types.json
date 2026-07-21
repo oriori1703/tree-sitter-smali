@@ -2260,6 +2260,14 @@
     "named": false
   },
   {
+    "type": "return-void-barrier",
+    "named": false
+  },
+  {
+    "type": "return-void-no-barrier",
+    "named": false
+  },
+  {
     "type": "return-wide",
     "named": false
   },
@@ -2441,14 +2449,6 @@
   },
   {
     "type": "sub-int/2addr",
-    "named": false
-  },
-  {
-    "type": "sub-int/lit16",
-    "named": false
-  },
-  {
-    "type": "sub-int/lit8",
     "named": false
   },
   {

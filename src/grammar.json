@@ -610,6 +610,14 @@
         },
         {
           "type": "STRING",
+          "value": "return-void-barrier"
+        },
+        {
+          "type": "STRING",
+          "value": "return-void-no-barrier"
+        },
+        {
+          "type": "STRING",
           "value": "return"
         },
         {
@@ -1442,10 +1450,6 @@
         },
         {
           "type": "STRING",
-          "value": "sub-int/lit16"
-        },
-        {
-          "type": "STRING",
           "value": "mul-int/lit16"
         },
         {
@@ -1471,10 +1475,6 @@
         {
           "type": "STRING",
           "value": "add-int/lit8"
-        },
-        {
-          "type": "STRING",
-          "value": "sub-int/lit8"
         },
         {
           "type": "STRING",
